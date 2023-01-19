@@ -42,4 +42,25 @@ class Kata {
         }
         return sum
     }
+
+    /* This kata is about multiplying a given number by eight if it is an even number
+    and by nine otherwise.
+    19.01.2023
+     */
+    fun simpleMultiplication(n: Int): Int = if (n % 2 == 0) n * 8 else n * 9
+
+    /* Nathan loves cycling.
+    Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water
+    per hour of cycling.
+    You get given the time in hours and you need to return the number of litres Nathan will drink,
+    rounded to the smallest value.
+    19.01.2023
+     */
+    fun litres(time: Double): Int = (time * 0.5).toInt()
+
+    /* Given a set of numbers, return the additive inverse of each. Each positive becomes negatives,
+    and the negatives become positives.
+    19.01.2023
+     */
+    fun invert(arr: IntArray): IntArray = arr.map {it * (-1)}.toIntArray()
 }
