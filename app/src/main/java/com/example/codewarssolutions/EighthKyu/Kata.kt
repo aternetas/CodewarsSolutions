@@ -1,4 +1,4 @@
-package com.example.codewarssolutions.EightKyu
+package com.example.codewarssolutions.EighthKyu
 
 class Kata {
     /* Create a function that takes an integer as an argument and returns "Even" for even numbers
@@ -64,19 +64,37 @@ class Kata {
      */
     fun invert(arr: IntArray): IntArray = arr.map {it * (-1)}.toIntArray()
 
-    /*Given the triangle of consecutive odd numbers. Calculate the sum of the numbers
-    in the nth row of this triangle (starting at index 1). E.g.:
-    1 -->  1
-    2 --> 3 + 5 = 8
-    3 --> 7 + 9 + 11 = 16
-    20.01.2023
-     */
-    fun rowSumOddNumbers(n: Int): Int = Math.pow(n.toDouble(), 3.00).toInt()
+    /* Complete the solution so that it reverses all of the words within the string passed in.
+    Words are separated by exactly one space and there are no leading or trailing spaces.
+    E.g.: "The greatest victory is that which requires no battle" -->
+            "battle no requires which that is victory greatest The"
+    21.01.2023
+    */
+    fun reverseWords(str:String):String = str.split(" ").reversed().joinToString(" ")
 
-    /*Find the total sum of internal angles (in degrees) in an n-sided simple polygon.
-    N will be greater than 2.
-    20.01.2023
+    /* I have a cat and a dog.
+    I got them at the same time as kitten/puppy. That was {humanYears} years ago.
+    Return their respective ages now as [humanYears,catYears,dogYears].
+    Notes: humanYears >= 1, humanYears are whole numbers only.
+    Cat years: 15 for first year, +9 for second year, +4 for each year after that.
+    Dog years: 15 for first year, +9 for second year, +5 for each year after that.
+    21.01.2023
      */
-    fun angle(n: Int): Int = (n - 2) * 180
+    fun calculateYears(years: Int): Array<Int> {
+        var catYears = if (years == 1) 15 else if (years == 2) 24 else 24 + (years - 2) * 4
+        var dogYears = if (years == 1) 15 else if (years == 2) 24 else 24 + (years - 2) * 5
+        return arrayOf(years, catYears, dogYears)
+    }
 
+    /* Write a program that finds the summation of every number from 1 to num.
+    The number will always be a positive integer greater than 0.
+    21.01.2023
+     */
+    fun summation(n:Int):Int {
+        var res = 0
+        (1..n).forEach {
+            res += it
+        }
+        return res
+    }
 }
