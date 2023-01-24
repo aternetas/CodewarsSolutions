@@ -97,4 +97,21 @@ class Kata {
         }
         return res
     }
+
+    /* You ask a small girl,"How old are you?". She always says, "x years old",
+    where x is a random number between 0 and 9.
+    Write a program that returns the girl's age (0-9) as an integer.
+    Assume the test input string is always a valid string. For example,
+    the test input may be "1 year old" or "5 years old".
+    The first character in the string is always a number.
+    23.01.2023
+     */
+    fun getAge(yearsOld: String): Int = yearsOld.substring(0, 1).toInt()
+
+    /* We need a function that can transform a string into a number.
+    Note: Don't worry, all inputs will be strings,
+    and every string is a perfectly valid representation of an integral number.
+    23.01.2023
+     */
+    fun stringToNumber(str: String): Int = str.toInt()
 }
