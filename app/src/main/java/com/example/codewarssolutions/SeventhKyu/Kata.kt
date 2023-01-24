@@ -53,6 +53,35 @@ class Kata {
         return res
     }
 
+    /* Simple, given a string of words, return the length of the shortest word(s).
+    String will never be empty and you do not need to account for different data types.
+    24.01.2023
+     */
+    fun findShort(s: String): Int = s.split(" ").minByOrNull { it.length }!!.length
+
+    /* John wants to decorate the walls of a room with wallpaper. He wants a fool-proof method for getting it right.
+    John knows that the rectangular room has a length of l meters, a width of w meters, a height of h meters.
+    The standard width of the rolls he wants to buy is 52 centimeters. The length of a roll is 10 meters.
+    He wants to buy a length 15% greater than the one he needs.
+    Your function wallpaper(l, w, h) should return as a plain English word in lower case the number of rolls he must buy.
+    Notes:
+    all rolls (even with incomplete width) are put edge to edge;
+    0 <= l, w, h (floating numbers); it can happens that w * h * l is zero;
+    the integer r (number of rolls) will always be less or equal to 20;
+    he number of rolls will be a positive or null integer (not a plain English word; this number can be greater than 20)
+    E.g.: wallpaper(4.0, 3.5, 3.0) -> "ten", wallpaper(0.0, 3.5, 3.0) -> "zero"
+    24.01.2023
+     */
+    fun wallpaper(l:Double, w:Double, h:Double):String {
+        val numbers = arrayOf("zero", "one", "two", "three", "four", "five", "six", "seven",
+            "eight", "nine", "ten", "eleven", "twelve","thirteen", "fourteen", "fifteen",
+            "sixteen", "seventeen", "eighteen", "nineteen", "twenty")
+        if (l * w * h == 0.0) return numbers[0]
+        val sOfWallpaper = 5.2
+        var sOfRoom = 2 * (l + w) * h * 1.15
+        var rolls = Math.ceil(sOfRoom / sOfWallpaper).toInt()
+        return numbers[rolls]
+    }
 
 
 }
