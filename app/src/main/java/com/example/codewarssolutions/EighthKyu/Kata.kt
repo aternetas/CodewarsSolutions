@@ -114,4 +114,37 @@ class Kata {
     23.01.2023
      */
     fun stringToNumber(str: String): Int = str.toInt()
+
+    /* Write a function to convert a name into initials.
+    This kata strictly takes two words with one space in between them.
+    The output should be two capital letters with a dot separating them.
+    E.g.: Sam Harris -> S.H
+    25.01.2023
+     */
+    fun abbrevName(name:String): String{
+        var names = name.split(" ")
+        var i1 = names.get(0)[0]
+        var i2 = names.get(1)[0]
+        return ("$i1.$i2").uppercase()
+    }
+
+    /* It's pretty straightforward. Your goal is to create a function that removes the first
+    and last characters of a string. You're given one parameter, the original string.
+    You don't have to worry with strings with less than two characters.
+    25.01.2023
+     */
+    fun removeChar(str: String): String = str.drop(1).dropLast(1)
+
+    /* Timmy & Sarah think they are in love, but around where they live, they will only know
+    once they pick a flower each. If one of the flowers has an even number of petals
+    and the other has an odd number of petals it means they are in love.
+    Write a function that will take the number of petals of each flower and return true
+    if they are in love and false if they aren't.
+    25.01.2023
+     */
+    fun loveFun(flowerA: Int, flowerB: Int): Boolean {
+        if (flowerA.rem(2) == 0 && flowerB.rem(2) == 1) return true
+        else if (flowerA.rem(2) == 1 && flowerB.rem(2) == 0) return true
+        else return false
+    }
 }
