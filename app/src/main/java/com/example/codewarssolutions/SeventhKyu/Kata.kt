@@ -83,5 +83,22 @@ class Kata {
         return numbers[rolls]
     }
 
+    /* King Arthur and his knights are having a New Years party. Last year Lancelot was jealous of Arthur,
+    because Arthur had a date and Lancelot did not, and they started a duel.
+    To prevent this from happening again, Arthur wants to make sure that there are at least
+    as many women as men at this year's party. He gave you a list of integers of all the party goers.
+    Arthur needs you to return true if he needs to invite more women or false if he is all set.
+    29.01.2023
+     */
+    fun inviteMoreWomen(l: List<Int>): Boolean = l.count{ it == -1 } < l.count{ it == 1 }
 
+    /* Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer.
+    Square all numbers k (0 <= k <= n) between 0 and n.
+    Count the numbers of digits d used in the writing of all the k**2.
+    E.g.: nbDig(0, 1) --> 4
+            the k*k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+            We are using the digit 1 in: 1, 16, 81, 100. The total count is then 4.
+    29.01.2023
+     */
+    fun nbDig(n:Int, d:Int):Int = (0..n).map { it * it }.joinToString("").count {it.toString() == d.toString()}
 }
