@@ -78,8 +78,8 @@ class Kata {
             "sixteen", "seventeen", "eighteen", "nineteen", "twenty")
         if (l * w * h == 0.0) return numbers[0]
         val sOfWallpaper = 5.2
-        var sOfRoom = 2 * (l + w) * h * 1.15
-        var rolls = Math.ceil(sOfRoom / sOfWallpaper).toInt()
+        val sOfRoom = 2 * (l + w) * h * 1.15
+        val rolls = Math.ceil(sOfRoom / sOfWallpaper).toInt()
         return numbers[rolls]
     }
 
@@ -101,4 +101,19 @@ class Kata {
     29.01.2023
      */
     fun nbDig(n:Int, d:Int):Int = (0..n).map { it * it }.joinToString("").count {it.toString() == d.toString()}
+
+    /* In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G".
+    Your function receives one side of the DNA (string); you need to return the other complementary side.
+    E.g.: "ATTGC" -> "TAACG"
+    3.02.2023
+     */
+    fun makeComplement(dna: String): String = dna.map {
+        when(it) {
+            'A' -> 'T'
+            'T' -> 'A'
+            'G' -> 'C'
+            'C' -> 'G'
+            else -> ' '
+        }
+    }.joinToString("")
 }
