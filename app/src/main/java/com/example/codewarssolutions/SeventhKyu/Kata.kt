@@ -116,4 +116,23 @@ class Kata {
             else -> ' '
         }
     }.joinToString("")
+
+    /* Given a positive integer n: 0 < n < 1e6, remove the last digit until you're left with a number
+    that is a multiple of three.
+    Return n if the input is already a multiple of three,
+    and if no such number exists, return null, a similar empty value, or -1.
+    E.g.: 1 -> null, 25 -> null, 36 -> 36, 1244 -> 12
+    07.02.2023
+    */
+    fun prevMultOfThree(n: Int): Int? {
+        var res = n
+        while (res % 3 != 0) {
+            val r = res.toString().dropLast(1)
+            if (r.isEmpty()){
+                return null
+            }
+            res = r.toInt()
+        }
+        return res
+    }
 }
