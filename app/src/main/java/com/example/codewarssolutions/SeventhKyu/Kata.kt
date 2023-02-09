@@ -123,7 +123,7 @@ class Kata {
     and if no such number exists, return null, a similar empty value, or -1.
     E.g.: 1 -> null, 25 -> null, 36 -> 36, 1244 -> 12
     07.02.2023
-    */
+     */
     fun prevMultOfThree(n: Int): Int? {
         var res = n
         while (res % 3 != 0) {
@@ -134,5 +134,53 @@ class Kata {
             res = r.toInt()
         }
         return res
+    }
+
+    /* In this little assignment you are given a string of space separated numbers,
+    and have to return the highest and lowest number.
+    E.g.: "1 2 3 4 5" -> "5 1"
+    08.02.2023
+    */
+    fun highAndLow(numbers: String): String {
+        val nums = numbers.split(" ").map { it.toInt() }
+        return "${nums.maxOrNull()} ${nums.minOrNull()}"
+    }
+
+    /* Create a function argsCount, that returns the count of passed arguments
+    08.02.2023
+     */
+    fun argsCount(vararg args: Any): Int = args.count()
+
+    /* You are given a sequence of a journey in London, UK. The sequence will contain bus numbers
+    and TFL tube names as strings. Journeys will always only contain a combination of tube names
+    and bus numbers. Each tube journey costs £2.40 and each bus journey costs £1.50.
+    If there are 2 or more adjacent bus journeys, the bus fare is capped for sets of two
+    adjacent buses and calculated as one bus fare for each set.
+    Your task is to calculate the total cost of the journey and return the cost
+    rounded to 2 decimal places in the format (where x is a number): £x.xx
+    E.g.: 'Piccadilly', 56, 93, 243, 20, 14 -> "£6.90"
+    08.02.2023
+     */
+    fun londonCityHacker(journey: Array<Any>): String {
+        var sum = 0.0
+        var isFirstBusInARow = false
+        for (i in journey.indices){
+            val ii = journey[i].toString()
+            if (ii.all { it.isDigit() }) {
+                if (isFirstBusInARow) {
+                    isFirstBusInARow = false
+                    continue
+                } else {
+                    isFirstBusInARow = true
+                    sum += 1.5
+                }
+            }
+            else {
+                sum += 2.4
+                isFirstBusInARow = false
+            }
+        }
+        val res = String.format("%.2f", sum)
+        return "£$res"
     }
 }
