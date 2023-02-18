@@ -183,4 +183,31 @@ class Kata {
         val res = String.format("%.2f", sum)
         return "£$res"
     }
+
+    /* My friend John likes to go to the cinema. He can choose between system A and system B.
+    System A : he buys a ticket (15 dollars) every time
+    System B : he buys a card (500 dollars) and a first ticket for 0.90 times the ticket price,
+    then for each additional ticket he pays 0.90 times the price paid for the previous ticket.
+    John wants to know how many times he must go to the cinema so that the final result of System B,
+    when rounded up to the next dollar, will be cheaper than System A.
+    The function movie has 3 parameters: card (price of the card), ticket (normal price of a ticket),
+    perc (fraction of what he paid for the previous ticket) and returns the first n such that
+    ceil(price of System B) < price of System A.
+    E.g.: movie(500, 15, 0.9) -> 43 (with card the total price is 634, with tickets 645)
+    18.02.2023
+    */
+    fun movie(card:Int, ticket:Int, perc:Double):Int {
+        var systemA = ticket.toDouble()
+        var systemB = card + ticket * perc
+        var t = ticket.toDouble() * perc
+        var i = 1
+
+        while (Math.ceil(systemB) >= systemA) {
+            i += 1
+            systemA += ticket
+            systemB += t * perc
+            t *= perc
+        }
+        return i
+    }
 }
