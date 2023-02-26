@@ -140,7 +140,7 @@ class Kata {
     and have to return the highest and lowest number.
     E.g.: "1 2 3 4 5" -> "5 1"
     08.02.2023
-    */
+     */
     fun highAndLow(numbers: String): String {
         val nums = numbers.split(" ").map { it.toInt() }
         return "${nums.maxOrNull()} ${nums.minOrNull()}"
@@ -195,7 +195,7 @@ class Kata {
     ceil(price of System B) < price of System A.
     E.g.: movie(500, 15, 0.9) -> 43 (with card the total price is 634, with tickets 645)
     18.02.2023
-    */
+     */
     fun movie(card:Int, ticket:Int, perc:Double):Int {
         var systemA = ticket.toDouble()
         var systemB = card + ticket * perc
@@ -209,5 +209,33 @@ class Kata {
             t *= perc
         }
         return i
+    }
+
+    /* Return the number (count) of vowels in the given string.
+    We will consider a, e, i, o, u as vowels for this Kata (but not y).
+    The input string will only consist of lower case letters and/or spaces.
+    26.02.2023
+     */
+    fun getCount(str : String) : Int {
+        val vowels = "aeiou"
+        var res = 0
+        vowels.forEach {vowel ->
+            res += str.count { it == vowel }
+        }
+        return res
+    }
+
+    /* Take a list of ages when each of your great-grandparent died.
+    Multiply each number by itself.
+    Add them all together.
+    Take the square root of the result.
+    Divide by two.
+    E.g.: predictAge(65, 60, 75, 55, 60, 63, 64, 45) -> 86
+    26.02.2023
+     */
+    fun predictAge(age1: Int, age2: Int, age3: Int, age4: Int, age5: Int, age6: Int, age7: Int, age8: Int): Int{
+        val res = arrayListOf(age1, age2, age3, age4, age5, age6, age7, age8)
+            .fold(0.0) { sum, next -> sum + Math.pow(next.toDouble(), 2.0) }
+        return (Math.sqrt(res) / 2).toInt()
     }
 }
