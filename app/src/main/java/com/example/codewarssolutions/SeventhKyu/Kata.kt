@@ -238,4 +238,21 @@ class Kata {
             .fold(0.0) { sum, next -> sum + Math.pow(next.toDouble(), 2.0) }
         return (Math.sqrt(res) / 2).toInt()
     }
+
+    /* The parameter of accum is a string which includes only letters from a..z and A..Z.
+    E.g.: accum("abcd") -> "A-Bb-Ccc-Dddd"
+    accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+    accum("cwAt") -> "C-Ww-Aaa-Tttt"
+    13.07.2023
+     */
+    fun accum(s: String): String {
+        val list = s.toList()
+        var res = ""
+        list.forEachIndexed{ index, value ->
+            val symbol = value.toString()
+            res += symbol.uppercase() + symbol.lowercase().repeat(index)
+            res += if (index != list.count() - 1) "-" else ""
+        }
+        return res
+    }
 }
