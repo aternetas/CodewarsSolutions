@@ -255,4 +255,20 @@ class Kata {
         }
         return res
     }
+
+    /* getMiddle("test") -> "es"
+    getMiddle("testing") -> "t"
+    getMiddle("middle") -> "dd"
+    getMiddle("A") should return "A"
+    A word (string) of length 0 < str < 1000
+    27.07.2023
+    */
+    fun getMiddle(word: String) : String {
+        val symbol = word.length / 2
+        return if (word.length % 2 == 1) {
+            word[symbol].toString()
+        } else {
+            "${word[symbol - 1]}${word[symbol]}"
+        }
+    }
 }
